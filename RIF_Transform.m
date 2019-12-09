@@ -29,21 +29,3 @@ x  = linspace(min,max,samp);    % spatial vector
 
 %% BUILD THE SPATIAL AND TEMPORAL FILTERS
 [Filter,fftFilter] = RIF_Kernel(sc,ss,max,min,samp,tsamp,tauC,tauS,tauG,wC,wS,T,tmax,t1);
-[Gx,Gy] = size(GausC);                 
-[fGx , fGy] = freqspace([Gx Gy]);  
-
-%% WEIGHTED DoG CASES
-[GausC,FGausC] = GaussianKernel(min,max,samp,1);
-[GausS,FGausS] = GaussianKernel(min,max,samp,1.8);
-b = 1;
-a = [0.1 0.3 0.4 0.7 0.9 1.1 2 4];
-% g = (b*(sc^4))/(a*(ss^4));    
-figure;
-for i = 1:size(a,2)
-    DoG = a(i)*GausC - b*GausS;
-    fDoG = a(i)*FGausC - b*FGausS; 
-    subplot(2,8,i); 
-    plot(x,DoG(floor(Gx/2),:));
-    subplot(2,8,i+8);
-    plot(x/2,abs((fDoG(floor(Gx/2),:))))
-end
