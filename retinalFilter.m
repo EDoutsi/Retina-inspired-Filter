@@ -2,7 +2,7 @@
 % -----------------------------------------------------------------------
 % This function builds the Retina-inspired filter in space and frequency
 % -----------------------------------------------------------------------
-function [F_Matrix,fftF_Matrix] = retinalFilter(GausC,FGausC,GausS,FGausS,R_C,R_S,wC,wS,samples)
+function [F_Matrix,fftF_Matrix] = RIF_Kernel(GausC,FGausC,GausS,FGausS,R_C,R_S,wC,wS,samples)
     T = numel(R_C);
     [Gx,Gy] = size(GausC);
     iter = 0;
