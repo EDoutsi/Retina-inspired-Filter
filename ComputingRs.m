@@ -17,7 +17,6 @@
 %
 % OUTPUTS --> The temporal 1D surround filter R_S 
 
-%% Surround Filter
 function [ R_S ] = ComputingRs( T, tmax, wC , tauC, tauG, tauS )
         n = 5;
         A = 1./tauG ; 
