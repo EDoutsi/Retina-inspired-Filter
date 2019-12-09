@@ -2,6 +2,7 @@
 ========================================================================
 
 -----------COPYRIGHT NOTICE STARTS WITH THIS LINE------------
+
 Copyright (c) 2018 Université Côte d'Azur and 4G-TECHNOLOGY All rights reserved.
 
 Permission is hereby granted, without written agreement and without license or royalty fees, to use, copy,  modify, and distribute this code (the source files) and its documentation for any purpose, provided that the copyright notice in its entirety appear in all copies of this code, and the original source of this code, Université Côte d'Azur (http://univ-cotedazur.fr/en#.Xe5q6S2B0UE) and 4G-TECHNOLOGY (https://4g-technology.fr) are acknowledged in any publication that reports research using this code. The research is to be cited in the bibliography as:
