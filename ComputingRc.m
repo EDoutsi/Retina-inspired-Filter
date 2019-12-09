@@ -16,7 +16,6 @@
 %            
 % OUTPUTS --> The temporal 1D surround filter R_C 
 
-%% Center Filter
 function [ R_C ] = ComputingRc(T, tmax, wC , tauC, tauG )
         n = 5;
         A = 1./tauG ; 
