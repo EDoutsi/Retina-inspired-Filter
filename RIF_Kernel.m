@@ -2,8 +2,7 @@
 % -----------------------------------------------------------------------
 % FUNCTIONS: 1. Build the 2D-Gaussian filters GausC and GausS
 %            2. Build the temporal filters R_C and R_S 
-% -----------------------------------------------------------------------
-% OUTPUT --> GausC, GausS, FGausC, FGausS, R_C and R_S
+%            3. Build the 2D RIF filter
 % -----------------------------------------------------------------------
 function [Filter,fftFilter]=...
     RIF_Kernel(sc,ss,max,min,samp,tsamp,tauC,tauS,tauG,wC,wS,T,tmax,t1)
