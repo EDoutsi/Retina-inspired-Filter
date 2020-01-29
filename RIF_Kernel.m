@@ -1,17 +1,20 @@
 %%%%%%%%%%%%%%%%%%   COMPONENTS OF THE RIF FILTER     %%%%%%%%%%%%%%%%%%%%
 % -----------------------------------------------------------------------
-% FUNCTIONS: 1. Build the 2D-Gaussian filters GausC and GausS
-%            2. Build the temporal filters R_C and R_S 
-%            3. Build the 2D RIF filter
+% INPUT --> sc and ss are the standard deviations of the center and surround 
+%           Gaussian filters respectively, x is the linespace, tsamp is the 
+%           sampling rate of the time vector, tauC, tauS and tauG are constant 
+%           parameters related to the temporal filters, wC and wS are two weights, 
+%           T is the size of the time window and tmax
+% -----------------------------------------------------------------------
+% OUTPUT --> GausC, GausS, FGausC, FGausS, R_C and R_S
 % -----------------------------------------------------------------------
 function [Filter,fftFilter]=...
-    RIF_Kernel(sc,ss,max,min,samp,tsamp,tauC,tauS,tauG,wC,wS,T,tmax,t1)
+    RIF_Kernel(sc,ss,x,tsamp,tauC,tauS,tauG,wC,wS,T,tmax)
     %% -- 2D GUASSIAN FILTERS
-    [GausC, FGausC] = GaussianKernel(min,max,samp,sc); % in tests 11
-    [GausS, FGausS] = GaussianKernel(min,max,samp,ss); % in tests 11
+    [GausC, FGausC] = GaussianKernel(x,sc); % in tests 11
+    [GausS, FGausS] = GaussianKernel(x,ss); % in tests 11
     [Gx,Gy] = size(GausC);
     [fGx , fGy] = freqspace([Gx Gy]);
-    x = linspace(min,max,samp);
     %% -- 1D TEMPORAL FILTERS
     R_C = ComputingRc(T, tmax, wC, tauC, tauG);
     R_S = ComputingRs(T, tmax, wS, tauC, tauG, tauS);
@@ -21,7 +24,8 @@ function [Filter,fftFilter]=...
     R_S_2T = ComputingRs(T, tmax2, wS, tauC, tauG, tauS);
     %% -- 2D RIF Filter 
     for j = 1:tsamp:T
-        Filter(j,:)  = wC * GausC(:) .* R_C(j) - wS * GausS(:) .* R_S(j);    % space
+        Filter(j,:)  = wC * GausC(:) .* R_C(j) - wS * GausS(:) .* R_S(j);       % space
         fftFilter(j,:)  = wC * FGausC(:) .* R_C(j) - wS * FGausS(:) .* R_S(j);  % frequency
     end
+    [FMx,FMy] = size(Filter);
 end
