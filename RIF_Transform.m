@@ -1,12 +1,9 @@
-%% MAIN FILE WHICH CONNECTS ALL THE FUNCTIONS
 % E. Doutsi, L. Fillatre, M. Antonini and J. Gaulmin, "Retina-Inspired Filter," 
 % in IEEE Transactions on Image Processing, vol. 27, no. 7, pp. 3484-3499, July 2018. 
 % doi: 10.1109/TIP.2018.2812079INSTRUCTIONS:
 %
-% 1. Build the retinal-inspired frame.
-%       1.1 We need first to build the Gaussian Filters (GaussianKernel.m)
-%       1.2 The temporal filters (ComputingRc.m and ComputingRs.m)
-%       1.3 Build the retinal-inspired non-separable spatiotemporal filter (retinalFilter.m)
+% Generate the Retinal-Inspired Filter (RIF). 
+     
 
 close all; clc;
 
