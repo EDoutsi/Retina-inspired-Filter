@@ -44,6 +44,6 @@ Usage:
 
 Dependencies: 
 
-MATLAB files:  GaussianKernel.m, ComputingRs.m, ComputingRc.m, Filterin.m, RIFFilter.m, RIF_Transform.m, RIF_Inverse_Transform.m  (provided with release)
+MATLAB files:  main.m, GaussianKernel.m, ComputingRs.m, ComputingRc.m, RIFFilter.m, RIF_Transform.m, RIF_Inverse_Transform.m, Matrix_reshape.m  (provided with release)
 
 Image Files: testimage1.tiff, testimage2.tiff
