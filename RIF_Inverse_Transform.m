@@ -57,29 +57,7 @@ function [reconstruction,distortion,cost_Vector,numbIter]= RIF_Inverse_Transform
                             break
                     end
                 end
-% %                 figure(100);
-% %                 subplot(2,3,1);
-% %                 imagesc(I);colormap(gray);
-% %                 title('Original');
-% %                 subplot(2,3,2);
-% %                 imagesc(xn);colormap(gray);
-% %                 title('Reconstuction');
-% %                 subplot(2,3,3);
-% %                 imagesc(rn);colormap(gray);
-% %                 title('Residual');
-% %                 subplot(2,3,4);
-% %                 plot(err_vector);
-% %                 title('Signal Error');
-% %                 subplot(2,3,5);
-% %                 plot(cost_Vector);
-% %                 title('|| b-Ax ||^2');
-% %                 subplot(2,3,6);
-% %                 plot(cost_Function);
-% %                 title('Cost function');
             end
             distortion = err_vector(end);
             reconstruction = xn;
-% %             figure(300);
-% %             imagesc(reconstruction);
-% %             axis off;
 end
