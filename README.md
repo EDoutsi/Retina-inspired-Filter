@@ -44,6 +44,6 @@ Usage:
 
 Dependencies: 
 
-MATLAB files:  Build_Filters.m, ComputingRs.m, ComputingRc.m, GaussianKernel.m, retinalFilter.m, Fourier_Multi_Filtering.m  (provided with release)
+MATLAB files:  GaussianKernel.m, ComputingRs.m, ComputingRc.m, Filterin.m, RIFFilter.m, RIF_Transform.m, RIF_Inverse_Transform.m  (provided with release)
 
 Image Files: testimage1.bmp, testimage2.bmp
