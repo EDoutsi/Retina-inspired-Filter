@@ -4,16 +4,14 @@
 %            2. max: The max value of the linspace
 %            3. samp: the number of points between min and max
 %            4. s: is the standard deviation of the Gaussian which defines the spread
-%
+% -----------------------------------------------------------------------
 % OUTPUT-->  1. Gaus2D: the 2D Gaussian filter
 %            2. FGaus2D: the spectrum of the filter
-
-%% Gaussian Filter 
+% -----------------------------------------------------------------------
 function [GausC2D,fftGaus2D] = GaussianKernel(x,s)
     [X,Y] = meshgrid(x,x);
     %% SPACE
     GausC2D = (1/(2*pi*(s^2)))*exp( (-(Y.^2)-(X.^2))/(2*(s^2)) );
-    % GausC2D = GausC2D/sum(GausC2D(:)); % normalize the filter
     [Gx,Gy] = size(GausC2D);
     [fGx,fGy] = freqspace([Gx Gy]);
     %% FREQUENCY
@@ -21,15 +19,4 @@ function [GausC2D,fftGaus2D] = GaussianKernel(x,s)
     FGaus2D = 1/(2*pi)* (exp((-(2*pi*fX*s).^2 - (2*pi*fY*s).^2)/2 ));
     Gaus2D_nor = GausC2D./sum(GausC2D(:));
     fftGaus2D = fftshift(fft2(Gaus2D_nor));
-
-    % % figure(9);
-    % % subplot(1,2,1);
-    % % mesh(x,x,(GausC2D));title('Gaussian'); set(gca,'Fontsize',12);
-    % % subplot(1,2,2);
-    % % mesh(fGx,fGx,spectrum2D);title('FFT Gaussian'); set(gca,'Fontsize',12);
-    % % figure(10);
-    % % subplot(1,2,1);
-    % % mesh(fGx,fGx,abs(fftshift(fft2(GausC2D))));
-    % % subplot(1,2,2);
-    % % mesh(fGx,fGy,spectrum2D);
 end
