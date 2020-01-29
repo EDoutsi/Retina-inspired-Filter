@@ -3,11 +3,9 @@
 % This is a function which does instead of a convolution in space domain, 
 % a mulitplication in frequency domain.
 % INPUT --> 1. Image "I"
-%           2. RIF Filter "fftFilter" in frequency domain     
-%           3. RIF Filter "Filter" in space domain
-%           4. "noise" (default 0)
 % ------------------------------------------------------------------------
-% ALGORITHM --> We test the size of the two matrices "I" and "Filter". If they have the same
+% ALGORITHM --> Build the RIF filter. 
+% Test the size of the two matrices "I" and "Filter". If they have the same
 % size then we don't need to add any zero padding. As a result, we use the 
 % fft2 (fast fourier transform for 2D) in the default way. In case the two 
 % matrices have different size we need to do the zero-padding                 
