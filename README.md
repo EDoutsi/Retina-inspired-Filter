@@ -26,21 +26,19 @@ E. Doutsi, L. Fillatre, M. Antonini and J. Gaulmin, "Retina-Inspired Filter".
 
 You can change this program as you like and use it anywhere, but please refer to its original source (cite our paper).
 
-Running on Matlab 
-
-Input : A test image loaded in an array
-
-Output: Apply the RIF filter to obtain the decomposition layers  
-
-Usage:
+Running on Matlab the main.m function
 
 1. Load the image, for example
 
   I = imread('testimage1.tiff'); 
 
-2. Call this function to apply the retina-inspired transform:
+2. Apply the retina-inspired transform:
 
   [RIF_I,fftRIF_I,fftRIF_Filter] = RIF_Transform(I)
+  
+3. Apply the inverse of the retina-inspired transform:
+
+  [Iout,MSE] = RIF_Inverse_Transform(I,fftRIF_Filter,fftRIF_I,10000);
 
 Dependencies: 
 
