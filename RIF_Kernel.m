@@ -1,12 +1,15 @@
-%%%%%%%%%%%%%%%%%%   COMPONENTS OF THE RIF FILTER     %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%   BUILD  THE RIF FILTER     %%%%%%%%%%%%%%%%%%%%%%%
 % -----------------------------------------------------------------------
-% INPUT --> sc and ss are the standard deviations of the center and surround 
-%           Gaussian filters respectively, x is the linespace, tsamp is the 
-%           sampling rate of the time vector, tauC, tauS and tauG are constant 
-%           parameters related to the temporal filters, wC and wS are two weights, 
-%           T is the size of the time window and tmax
+% INPUT:  1. sc, ss -> the standard deviations of the center and surround Gaussian filters, respectively, 
+%         2. x -> the linespace, 
+%         3. tsamp -> the sampling rate of the time vector,
+%         4. tauC, tauS and tauG -> constant parameters related to the temporal filters, 
+%         5. wC and wS -> two weights 
+%         6. T -> the size of the time window 
+%         7. tmax -> a time parameter which is used for illustration purpose
 % -----------------------------------------------------------------------
-% OUTPUT --> GausC, GausS, FGausC, FGausS, R_C and R_S
+% OUTPUT: 1. Filter -> The RIF filter in space domain
+%         2. fftFilter -> the RIF filter in frequency domain
 % -----------------------------------------------------------------------
 function [Filter,fftFilter]=...
     RIF_Kernel(sc,ss,x,tsamp,tauC,tauS,tauG,wC,wS,T,tmax)
