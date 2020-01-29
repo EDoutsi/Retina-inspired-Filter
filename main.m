@@ -6,7 +6,7 @@
 close all; clc;
 
 % LOAD THE INPUT IMAGE
-I = double(imread('testimage1.tiff')); 
+I = double(rgb2gray(imread('testimage1.tiff'))); 
 
 %% APPLY THE RIF TRANSFORM
 [RIF_I,fftRIF_I,fftRIF_Filter] = RIF_Transform(I);
