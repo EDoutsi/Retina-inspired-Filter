@@ -27,23 +27,15 @@ function  [obs_Matrix,fftobs_Matrix,fftF_Matrix] = RIF_Transform(I)
         T  = 150; tmax = T; tsamp = 1;  % number od time instances
         t1 = 1:tsamp:tmax;              % temporal vector
         x  = linspace(min,max,samp);    % spatial vector
-        %% BUILD THE SPATIAL AND TEMPORAL FILTERS
+        %% BUILD THE RIF FILTER
         [Filter,fftFilter] = RIFFilter(sc,ss,x,tsamp,tauC,tauS,tauG,wC,wS,T,tmax);
-        % % [Gx,Gy] = size(GausC);                 
-        % % [fGx , fGy] = freqspace([Gx Gy]);  
-
         [Ix,Iy] = size(I);
         [Fx,Fy] = size(Filter);
+        %% APPLY THE RIF FILTER ON AN INPUT IMAGE
         for i = 1:Fx                    
-                F = Matrix_reshape(Filter,i,sqrt(Fy),sqrt(Fy));                          % extract 1-1 the decomposition layers without noise
-                fftFSpectrum = Matrix_reshape(fftFilter,i,sqrt(Fy),sqrt(Fy));            % extract 1-1 the decomposition layers without noise
+                F = Matrix_reshape(Filter,i,sqrt(Fy),sqrt(Fy));                         
+                fftFSpectrum = Matrix_reshape(fftFilter,i,sqrt(Fy),sqrt(Fy));          
                 if (Iy ~= Fy)
-                    %% COMPUTE THE CONVOLUTION BETWEEN THE FILTER AND THE IMAGE
-                    % We actually use the mulitplication in fourier domain instead of the 
-                    % convolution in space. We compute the fft of the input image I 
-                    % and the filter F. Finally, we calculate the (fftobs) and we inverse
-                    % this to extract the observations in space. Finally, we save the
-                    % obs and the fftobs results in matrices.
                     h = F;
                     ffth = fftFSpectrum;
                     s = (size(fftFSpectrum)-1)/2;
@@ -58,10 +50,9 @@ function  [obs_Matrix,fftobs_Matrix,fftF_Matrix] = RIF_Transform(I)
                     F = fftshift(Hs);
                     fftI = fft2(I);
                     fftF = fft2(F);
-                   %% CONVOLUTION in SPACE = MULTIPLICATION in FOURIER                          
                     fftobsSpectrum = fftI.*fftFSpectrum;            % using the Gaussian in frequency 
                     fftobsSpace      = fftI.* fftF;                 % using the Gaussian in space
-                    obs = real((ifft2(fftobsSpace))); % using the Gaussian in space
+                    obs = real((ifft2(fftobsSpace)));               % using the Gaussian in space
                 else
                     fftI = fft2(I);
                     fftobsSpace = fftI.*fftF;
@@ -70,26 +61,4 @@ function  [obs_Matrix,fftobs_Matrix,fftF_Matrix] = RIF_Transform(I)
                 fftobs_Matrix(i,:) = fftobsSpace(:);
                 fftF_Matrix(i,:) = fftF(:);
         end
-        
-% %     figure(2);
-% %     subplot(2,3,1);
-% %     imagesc(I);colormap(gray);
-% %     title('Original Signal');
-% %     subplot(2,3,2);
-% %     mesh(F0);
-% %     title('Filter in space');
-% %     subplot(2,3,3);
-% %     imagesc(obs);colormap(gray);
-% %     title('Observations');
-% %     subplot(2,3,4);
-% %     imagesc(log(abs(fftshift(fftI))));colormap(gray);
-% %     title('FFT of the signal');
-% %     subplot(2,3,5);
-% %     imagesc(log(abs(fftshift(fftF))));
-% %     title('FFT of the filter');
-% %     subplot(2,3,6);
-% %     imagesc(log(abs(fftshift(fftobs))));colormap(gray);
-% %     title('FFT of the observation');
-% %     
-    
 end
