@@ -12,4 +12,4 @@ I = double(rgb2gray(imread('testimage1.tiff')));
 [RIF_I,fftRIF_I,fftRIF_Filter] = RIF_Transform(I);
 
 %% APPLY THE INVERSE RIF TRANSFORM
-[Iout,MSE] = Inverse_Filtering(I,fftRIF_Filter,fftRIF_I,10000);
+[Iout,MSE] = RIF_Inverse_Transform(I,fftRIF_Filter,fftRIF_I,10000);
