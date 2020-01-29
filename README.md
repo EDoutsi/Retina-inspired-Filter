@@ -36,14 +36,14 @@ Usage:
 
 1. Load the image, for example
 
-  I = imread('testimage1.bmp'); 
+  I = imread('testimage1.tiff'); 
 
 2. Call this function to apply the retina-inspired transform:
 
-  RIF_transform = RIFFilter(I)
+  [RIF_I,fftRIF_I,fftRIF_Filter] = RIF_Transform(I)
 
 Dependencies: 
 
 MATLAB files:  GaussianKernel.m, ComputingRs.m, ComputingRc.m, Filterin.m, RIFFilter.m, RIF_Transform.m, RIF_Inverse_Transform.m  (provided with release)
 
-Image Files: testimage1.bmp, testimage2.bmp
+Image Files: testimage1.tiff, testimage2.tiff
