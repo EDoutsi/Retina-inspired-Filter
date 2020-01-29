@@ -1,9 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%    BUILD THE GAUSSIAN KERNEL    %%%%%%%%%%%%%%%%%%%%%
 % -----------------------------------------------------------------------
-% INPUTS-->  1. min: the min value of the linspace
-%            2. max: The max value of the linspace
-%            3. samp: the number of points between min and max
-%            4. s: is the standard deviation of the Gaussian which defines the spread
+% INPUTS-->  1. x: linespace
+%            2. s: is the standard deviation of the Gaussian which defines the spread
 % -----------------------------------------------------------------------
 % OUTPUT-->  1. Gaus2D: the 2D Gaussian filter
 %            2. FGaus2D: the spectrum of the filter
