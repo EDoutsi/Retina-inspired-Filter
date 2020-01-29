@@ -36,11 +36,11 @@ Usage:
 
 1. Load the image, for example
 
-  image = imread('testimage1.bmp'); 
+  I = imread('testimage1.bmp'); 
 
 2. Call this function to apply the retina-inspired transform:
 
-   RIF_transform = RIFFilter(image)
+  RIF_transform = RIFFilter(I)
 
 Dependencies: 
 
