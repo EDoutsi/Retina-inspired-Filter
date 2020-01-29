@@ -1,8 +1,6 @@
 % E. Doutsi, L. Fillatre, M. Antonini and J. Gaulmin, "Retina-Inspired Filter," 
 % in IEEE Transactions on Image Processing, vol. 27, no. 7, pp. 3484-3499, July 2018. 
 % doi: 10.1109/TIP.2018.2812079INSTRUCTIONS:
-%
-% Generate the Retinal-Inspired Filter (RIF). 
      
 
 close all; clc;
@@ -18,3 +16,13 @@ x  = linspace(minx,maxx,samp);        % spatial vector
 
 %% BUILD THE SPATIAL AND TEMPORAL FILTERS
 [Filter,fftFilter] = RIF_Kernel(sc,ss,x,tsamp,tauC,tauS,tauG,wC,wS,T,tmax,t1);
+
+%% LOAD AN INPUT IMAGE
+I = imread('');
+
+%% APPLY THE RIF TRANSFORM
+[obs_Matrix,fftobs_Matrix,fftF_Matrix] = Filtering(I,fftFilter,Filter,0);
+
+%% APPLY THE INVERSE RIF TRANSFORM
+[Iout,MSE,cost_Vector,numbIter] = Inverse_Filtering(I,fftF_Matrix,fftobs_Matrix,MaxIter);
+
