@@ -1,4 +1,4 @@
-# Retina-inspired-Filter
+# Retina inspired Filter
 ========================================================================
 
 -----------COPYRIGHT NOTICE STARTS WITH THIS LINE------------
